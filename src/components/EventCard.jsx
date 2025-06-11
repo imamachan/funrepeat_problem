@@ -8,4 +8,10 @@ function EventCard({ event }) {
   );
 }
 
+import { Link } from "react-router-dom";
+
+<Link to={`/events/${event.id}`} className="text-blue-500 hover:underline">
+  詳細を見る
+</Link>;
+
 export default EventCard;
