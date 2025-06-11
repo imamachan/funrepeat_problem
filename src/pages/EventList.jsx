@@ -1,3 +1,5 @@
+// src/pages/EventList.jsx
+import React from "react";
 import EventCard from "../components/EventCard";
 
 const dummyEvents = [
@@ -12,8 +14,8 @@ const dummyEvents = [
 
 function EventList() {
   return (
-    <div className="max-w-2xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold text-center mb-6">イベント一覧</h1>
+    <div>
+      <h1>イベント一覧</h1>
       {dummyEvents.map((event) => (
         <EventCard key={event.id} event={event} />
       ))}
