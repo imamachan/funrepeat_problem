@@ -1,14 +1,66 @@
-# React + Vite
+# 🌍 地域イベント管理アプリ
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+本アプリは、地域のイベントを「作成」「一覧表示」「詳細閲覧」「参加表明」できるシンプルな SPA です。
+ユーザー登録なしで気軽にイベント情報を管理できるよう設計されています。
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# 🔧 使用技術・ライブラリ
 
-## Expanding the ESLint configuration
+| 項目           | 内容                                         |
+| -------------- | -------------------------------------------- |
+| フレームワーク | [React](https://reactjs.org/) (Vite 構成)    |
+| ルーティング   | [React Router DOM](https://reactrouter.com/) |
+| CSS            | [Tailwind CSS](https://tailwindcss.com/)     |
+| アイコン       | [Lucide React](https://lucide.dev/icons/)    |
+| 状態管理       | React の `useState`, `useEffect` など        |
+| 永続化         | ブラウザの `localStorage` を使用             |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
 
-本アプリは、ある地域（例：市区町村）に限定した地域住民向けのイベント掲示板を想定しています。誰でも気軽にイベント情報を閲覧・投稿できるシンプルな構成を目指しました。UI は多世代が直感的に扱えるように配慮しています。
+# 🚀 セットアップ手順
+
+1.　 funrepeat_problem リポジトリ作成
+
+2.  GitHub からローカルにクローン
+
+3.  Vite プロジェクトの初期化
+    npm create vite@latest . -- --template react
+
+4.  パッケージをインストール
+    npm install
+
+5.  開発サーバー起動
+    npm run dev
+
+---
+
+# 💻 実施機能
+
+| 機能             | 説明                                                                                                                           |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| イベント一覧表示 | 保存されたイベントをカード形式で一覧表示します。参加人数と参加済みステータスも表示。                                           |
+| イベント詳細     | 各イベントの詳細画面を表示します。参加表明ボタンあり。                                                                         |
+| イベント作成     | フォームからイベント情報を入力し、ローカルストレージに保存します。                                                             |
+| 参加表明         | イベントに対して「参加する」「参加を取り消す」が可能です。                                                                     |
+| レスポンシブ対応 | Tailwind の `sm:` `md:` などを使い、スマホ〜PC まで対応しています。                                                            |
+| デザイン統一     | 優しいカラーパレット、行間・文字サイズの調整、カード UI、Lucide アイコンなどを活用し、シンプルで見やすい UI を実現しています。 |
+
+---
+
+# 🧪 動作確認方法
+
+1. ブラウザでトップページを開く（例: http://localhost:5173/）
+
+2. 「イベント作成」ボタンからイベントを作成
+   タイトル、日時、場所は空欄で作成不可
+
+3. 一覧にイベントが表示されることを確認
+
+4. イベントカードの「詳細を見る」から詳細画面に遷移
+
+5. 「参加する」ボタンを押して、参加表明が反映されるか確認
+
+6. 一覧ページに戻り、参加済みラベルが表示されていることを確認
+
+---
