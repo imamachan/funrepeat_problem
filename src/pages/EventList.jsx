@@ -1,24 +1,34 @@
 // src/pages/EventList.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import EventCard from "../components/EventCard";
-
-const dummyEvents = [
-  { id: 1, title: "夏祭り", date: "2025-07-20", location: "公民館" },
-  {
-    id: 2,
-    title: "フリーマーケット",
-    date: "2025-08-10",
-    location: "中央公園",
-  },
-];
+import { Link } from "react-router-dom";
 
 function EventList() {
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    const storedEvents = JSON.parse(localStorage.getItem("events")) || [];
+    setEvents(storedEvents);
+  }, []);
+
   return (
     <div>
       <h1>イベント一覧</h1>
-      {dummyEvents.map((event) => (
-        <EventCard key={event.id} event={event} />
-      ))}
+
+      <div className="mb-4">
+        <Link
+          to="events/create"
+          className="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        >
+          イベント作成
+        </Link>
+      </div>
+
+      {events.length > 0 ? (
+        events.map((event) => <EventCard key={event.id} event={event} />)
+      ) : (
+        <p>イベントがまだありません。</p>
+      )}
     </div>
   );
 }
