@@ -1,39 +1,43 @@
-import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom"; // ← 戻るために useNavigate を使用
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 function EventDetail() {
   const { id } = useParams();
-  const navigate = useNavigate(); // ← 遷移に使用
-  const [isParticipating, setIsParticipating] = useState(false); // ← 参加状態
+  const navigate = useNavigate();
+  const eventId = Number(id);
 
-  const dummyEvents = [
-    {
-      id: 1,
-      title: "夏祭り",
-      date: "2025-07-20",
-      location: "公民館",
-      description: "地域のお祭りです！屋台や盆踊りがあります。",
-    },
-    {
-      id: 2,
-      title: "フリーマーケット",
-      date: "2025-08-10",
-      location: "中央公園",
-      description: "出店者募集中！古着や手作り雑貨も。",
-    },
-  ];
+  const events = JSON.parse(localStorage.getItem("events")) || [];
+  const event = events.find((e) => e.id === eventId);
 
-  const event = dummyEvents.find((e) => e.id === parseInt(id));
-  if (!event) return <p>イベントが見つかりませんでした。</p>;
+  const [isParticipating, setIsParticipating] = useState(false);
+
+  // 初期表示時に参加状態を読み込む
+  useEffect(() => {
+    const participation =
+      JSON.parse(localStorage.getItem("participation")) || {};
+    setIsParticipating(!!participation[eventId]);
+  }, [eventId]);
 
   const handleParticipation = () => {
-    setIsParticipating((prev) => !prev);
+    const participation =
+      JSON.parse(localStorage.getItem("participation")) || {};
+
+    if (isParticipating) {
+      delete participation[eventId];
+    } else {
+      participation[eventId] = true;
+    }
+
+    localStorage.setItem("participation", JSON.stringify(participation));
+    setIsParticipating(!isParticipating);
   };
+
+  if (!event) return <p>イベントが見つかりませんでした。</p>;
 
   return (
     <div className="p-4">
       <button
-        onClick={() => navigate(-1)} // ← 前のページに戻る
+        onClick={() => navigate(-1)}
         className="text-blue-600 underline mb-4"
       >
         ◀ 戻る
