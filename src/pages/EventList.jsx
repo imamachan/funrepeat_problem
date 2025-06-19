@@ -17,15 +17,6 @@ function EventList() {
         イベント一覧
       </h1>
 
-      <div className="mb-6 text-right">
-        <Link
-          to="events/create"
-          className="inline-block bg-blue-500 text-white px-6 py-3 text-sm md:text-base rounded hover:bg-blue-600 transition"
-        >
-          ＋ イベント作成
-        </Link>
-      </div>
-
       {events.length > 0 ? (
         <div className="space-y-4">
           {events.map((event) => (
