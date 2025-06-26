@@ -18,21 +18,26 @@
 
 ---
 
-# 🚀 セットアップ手順
+## 🚀 セットアップ手順
 
-1.　 funrepeat_problem リポジトリ作成
+このアプリケーションをローカル環境で動かすには、以下の手順を実行してください。
 
-2.  GitHub からローカルにクローン
+### 1. リポジトリをクローン
 
-3.  Vite プロジェクトの初期化
-    npm create vite@latest . -- --template react
-
-4.  パッケージをインストール
-    npm install
-
-5.  開発サーバー起動
-    npm run dev
-
+```bash
+git clone https://github.com/imamachan/funrepeat_problem.git
+cd funrepeat_problem
+2. パッケージをインストール
+bash
+コピーする
+編集する
+npm install
+3. 開発サーバーを起動
+bash
+コピーする
+編集する
+npm run dev
+ブラウザで http://localhost:5173 を開いて、アプリケーションが起動していることを確認してください。
 ---
 
 # 💻 実施機能
@@ -50,12 +55,16 @@
 
 # 🧪 動作確認方法
 
+![イベント作成のGIF](./demo/event_create.gif)
+
 1. ブラウザでトップページを開く（例: http://localhost:5173/）
 
 2. 「イベント作成」ボタンからイベントを作成
    タイトル、日時、場所は空欄で作成不可
 
 3. 一覧にイベントが表示されることを確認
+
+![イベント詳細のGIF](./demo/event_detail.gif)
 
 4. イベントカードの「詳細を見る」から詳細画面に遷移
 
@@ -64,3 +73,4 @@
 6. 一覧ページに戻り、参加済みラベルが表示されていることを確認
 
 ---
+```

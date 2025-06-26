@@ -5,8 +5,8 @@ import { CalendarDays, MapPin, SquareCheck } from "lucide-react";
 function EventCard({ event }) {
   const participation = JSON.parse(localStorage.getItem("participation")) || {};
   const isParticipating = participation[event.id];
-  const participantCount = Object.keys(participation).filter(
-    (key) => Number(key) === event.id
+  const participantCount = Object.entries(participation).filter(
+    ([key, value]) => Number(key) === event.id && value === true
   ).length;
 
   return (
